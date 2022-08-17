@@ -15,6 +15,17 @@ const getPointFromAngle = (angle) => {
   return { x, y };
 };
 
+const lineGroup = document.querySelector("g.lines");
+
+const drawLine = (p1, p2) => {
+  const line = document.createElementNS(svgns, "line");
+  line.setAttributeNS(null, "x1", p1.x);
+  line.setAttributeNS(null, "y1", p1.y);
+  line.setAttributeNS(null, "x2", p2.x);
+  line.setAttributeNS(null, "y2", p2.y);
+  lineGroup.appendChild(line);
+};
+
 const container = document.querySelector("g.samples");
 
 export class Board {
@@ -28,7 +39,7 @@ export class Board {
     this.name = "board";
   }
 
-  draw() {
+  drawCircles() {
     console.log("I am drawing");
     const samples = this.config.samples;
 
@@ -44,6 +55,29 @@ export class Board {
       circle.setAttributeNS(null, "r", r);
       container.appendChild(circle);
     }
+  }
+
+  drawLines() {
+    console.log("I am drawing lines");
+    for (let i = 0; i < this.config.samples; i++) {
+      this.drawLine(i);
+    }
+  }
+
+  drawLine(index) {
+    const angle1 = getAngleFromIndex(index);
+    const angle2 = getAngleFromIndex(index * this.config.multiplicationFactor);
+
+    const p1 = getPointFromAngle(angle1);
+    console.log("p1: ", p1);
+    const p2 = getPointFromAngle(angle2);
+
+    drawLine(p1, p2);
+  }
+
+  draw() {
+    this.drawCircles();
+    this.drawLines();
   }
 
   setConfig(config) {
