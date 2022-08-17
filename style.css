@@ -1,0 +1,11 @@
+svg {
+  border: 0.1em solid black;
+  width: 60em;
+  height: 30em;
+}
+
+circle {
+  fill: transparent;
+  stroke-width: 0.05em;
+  stroke: black;
+}
