@@ -65,8 +65,13 @@ export class Board {
   }
 
   drawLine(index) {
-    const angle1 = getAngleFromIndex(index);
-    const angle2 = getAngleFromIndex(index * this.config.multiplicationFactor);
+    console.log("index: ", index);
+    const angle1 = getAngleFromIndex(index, this.config.samples);
+    console.log("angle1: ", angle1);
+    const angle2 = getAngleFromIndex(
+      index * this.config.multiplicationFactor,
+      this.config.samples
+    );
 
     const p1 = getPointFromAngle(angle1);
     console.log("p1: ", p1);
