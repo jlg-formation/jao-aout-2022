@@ -10,15 +10,15 @@ const svgns = "http://www.w3.org/2000/svg";
 
 console.log("samples: ", samples);
 
-function getAngleFromIndex(index, samples) {
+const getAngleFromIndex = (index, samples) => {
   return 2 * Math.PI * (index / samples);
-}
+};
 
-function getPointFromAngle(angle) {
+const getPointFromAngle = (angle) => {
   const x = cx0 + Math.cos(angle) * r0;
   const y = cy0 + Math.sin(angle) * r0;
   return { x, y };
-}
+};
 
 const container = document.querySelector("g.samples");
 
