@@ -1,4 +1,6 @@
-"use strict";
+import { Person } from "./Person.js";
+import { Employee } from "./Employee.js";
+import { Board } from "./Board.js";
 
 try {
   console.log("start");
