@@ -2,7 +2,7 @@
   "use strict";
 
   function Employee(name, age, companyName, salary) {
-    Object.getPrototypeOf(Employee.prototype).constructor(name, age);
+    Object.getPrototypeOf(Employee.prototype).constructor.bind(this)(name, age);
     this.companyName = companyName;
     this.salary = salary;
   }

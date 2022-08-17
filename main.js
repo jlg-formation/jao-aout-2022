@@ -15,8 +15,10 @@ try {
 
 const alice = new Person("Alice", 23);
 alice.sayHello();
+console.log("alice: ", alice);
 
 const bob = new Employee("Bob", 34, "Orsys", 2000);
 bob.sayHello();
 bob.reward(10);
 bob.sayHello();
+console.log("bob: ", bob);
