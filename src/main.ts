@@ -9,7 +9,7 @@ try {
   const board = new Board();
   const initialConfig: Config = {
     samples: 10,
-    multiplicationFactor: 2,
+    multiplicationFactor: 3,
   };
   board.setConfig(initialConfig);
   board.draw();
