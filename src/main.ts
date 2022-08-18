@@ -1,10 +1,11 @@
 import { Board } from "./Board.js";
 import { Command } from "./Command.js";
+import { Config } from "./interfaces/Config.js";
 
 try {
   console.log("start");
   const board = new Board();
-  const initialConfig = {
+  const initialConfig: Config = {
     samples: 10,
     multiplicationFactor: 2,
   };
@@ -12,7 +13,7 @@ try {
   board.draw();
 
   const command = new Command(initialConfig);
-  command.subscribe((newConfig) => {
+  command.subscribe((newConfig: Config) => {
     board.setConfig(newConfig);
     board.redraw();
   });

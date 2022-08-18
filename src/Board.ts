@@ -1,3 +1,6 @@
+import { Config } from "./interfaces/Config";
+import { Point } from "./interfaces/Point";
+
 const r = 1;
 
 const cx0 = 50;
@@ -5,38 +8,37 @@ const cy0 = 50;
 const r0 = 45;
 const svgns = "http://www.w3.org/2000/svg";
 
-const getAngleFromIndex = (index, samples) => {
+const getAngleFromIndex = (index: number, samples: number) => {
   return 2 * Math.PI * (index / samples);
 };
 
-const getPointFromAngle = (angle) => {
+const getPointFromAngle = (angle: number) => {
   const x = cx0 + Math.cos(angle) * r0;
   const y = cy0 + Math.sin(angle) * r0;
   return { x, y };
 };
 
-const lineGroup = document.querySelector("g.lines");
+const lineGroup = document.querySelector("g.lines") as Element;
+if (lineGroup === null) {
+  throw new Error("Cannot find g.lines");
+}
 
-const drawLine = (p1, p2) => {
+const drawLine = (p1: Point, p2: Point) => {
   const line = document.createElementNS(svgns, "line");
-  line.setAttributeNS(null, "x1", p1.x);
-  line.setAttributeNS(null, "y1", p1.y);
-  line.setAttributeNS(null, "x2", p2.x);
-  line.setAttributeNS(null, "y2", p2.y);
+  line.setAttributeNS(null, "x1", p1.x + "");
+  line.setAttributeNS(null, "y1", `${p1.y}`);
+  line.setAttributeNS(null, "x2", String(p2.x));
+  line.setAttributeNS(null, "y2", p2.y.toFixed());
   lineGroup.appendChild(line);
 };
 
-const container = document.querySelector("g.samples");
+const container = document.querySelector("g.samples") as Element;
 
 export class Board {
-  constructor() {
-    this.config = {
-      samples: 23,
-      multiplicationFactor: 34,
-    };
-
-    this.name = "board";
-  }
+  private config: Config = {
+    samples: 23,
+    multiplicationFactor: 34,
+  };
 
   drawCircles() {
     const samples = this.config.samples;
@@ -46,9 +48,9 @@ export class Board {
       const { x, y } = getPointFromAngle(angle);
 
       const circle = document.createElementNS(svgns, "circle");
-      circle.setAttributeNS(null, "cx", x);
-      circle.setAttributeNS(null, "cy", y);
-      circle.setAttributeNS(null, "r", r);
+      circle.setAttributeNS(null, "cx", x + "");
+      circle.setAttributeNS(null, "cy", y + "");
+      circle.setAttributeNS(null, "r", r + "");
       container.appendChild(circle);
     }
   }
@@ -59,7 +61,7 @@ export class Board {
     }
   }
 
-  drawLine(index) {
+  drawLine(index: number) {
     const angle1 = getAngleFromIndex(index, this.config.samples);
 
     const angle2 = getAngleFromIndex(
@@ -85,7 +87,7 @@ export class Board {
     this.draw();
   }
 
-  setConfig(config) {
+  setConfig(config: Config) {
     this.config = config;
   }
 }

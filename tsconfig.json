@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "outDir": "dist",
+    "allowJs": true,
+    "strict": true
+  },
+  "include": ["src"]
+}
