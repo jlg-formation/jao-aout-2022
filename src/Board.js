@@ -79,6 +79,12 @@ export class Board {
     this.drawLines();
   }
 
+  redraw() {
+    container.innerHTML = "";
+    lineGroup.innerHTML = "";
+    this.draw();
+  }
+
   setConfig(config) {
     this.config = config;
   }

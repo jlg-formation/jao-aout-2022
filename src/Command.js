@@ -26,8 +26,13 @@ export class Command {
     const array = Object.keys(this.config);
     for (const key of array) {
       const slider = document.querySelector(`div.command label.${key} input`);
-      slider.addEventListener("input", () => {
-        console.log("coucou");
+      slider.addEventListener("input", (event) => {
+        console.log("event: ", event);
+        const value = slider.value;
+        console.log("value: ", value);
+        this.config[key] = value;
+        this.applyConfig();
+        this.callback(this.config);
       });
     }
   }
