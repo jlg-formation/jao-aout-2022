@@ -30,7 +30,6 @@ const container = document.querySelector("g.samples");
 
 export class Board {
   constructor() {
-    console.log("instantiating board");
     this.config = {
       samples: 23,
       multiplicationFactor: 34,
@@ -40,12 +39,9 @@ export class Board {
   }
 
   drawCircles() {
-    console.log("I am drawing");
     const samples = this.config.samples;
 
     for (let i = 0; i < samples; i++) {
-      console.log("i: ", i);
-
       const angle = getAngleFromIndex(i, samples);
       const { x, y } = getPointFromAngle(angle);
 
@@ -58,23 +54,21 @@ export class Board {
   }
 
   drawLines() {
-    console.log("I am drawing lines");
     for (let i = 0; i < this.config.samples; i++) {
       this.drawLine(i);
     }
   }
 
   drawLine(index) {
-    console.log("index: ", index);
     const angle1 = getAngleFromIndex(index, this.config.samples);
-    console.log("angle1: ", angle1);
+
     const angle2 = getAngleFromIndex(
       index * this.config.multiplicationFactor,
       this.config.samples
     );
 
     const p1 = getPointFromAngle(angle1);
-    console.log("p1: ", p1);
+
     const p2 = getPointFromAngle(angle2);
 
     drawLine(p1, p2);
