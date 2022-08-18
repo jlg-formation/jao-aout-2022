@@ -12,5 +12,8 @@
   "dependencies": {
     "normalize.css": "^8.0.1",
     "sanitize.css": "^13.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
   }
 }
