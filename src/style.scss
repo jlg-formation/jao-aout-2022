@@ -1,0 +1,9 @@
+@import "./scss/variables.scss";
+
+body {
+  padding: 0.5em;
+  font-family: sans-serif;
+}
+
+@import "./scss/board.scss";
+@import "./scss/command.scss";

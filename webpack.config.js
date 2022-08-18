@@ -22,8 +22,8 @@ module.exports = (_, args) => {
           exclude: /node_modules/,
         },
         {
-          test: /\.css$/i,
-          use: [MiniCssExtractPlugin.loader, "css-loader"],
+          test: /\.scss$/i,
+          use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
         },
       ],
     },
