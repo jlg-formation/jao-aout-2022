@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 svg {
   border: 0.1em solid black;
   width: 60em;
@@ -17,4 +23,11 @@ circle {
 .lines line {
   stroke: black;
   stroke-width: 0.02em;
+}
+
+div.command {
+  border: 0.1em solid black;
+  width: 60em;
+  height: 10em;
+  padding: 0.5em;
 }
