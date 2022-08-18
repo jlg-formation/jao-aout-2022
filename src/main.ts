@@ -1,6 +1,6 @@
-import { Board } from "./Board.js";
-import { Command } from "./Command.js";
-import { Config } from "./interfaces/Config.js";
+import { Board } from "./Board";
+import { Command } from "./Command";
+import { Config } from "./interfaces/Config";
 
 try {
   console.log("start");
