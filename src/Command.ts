@@ -20,8 +20,9 @@ export class Command {
 
     for (const key of array) {
       const slider = querySelector(
-        `div.command label.${key} input`
-      ) as HTMLInputElement;
+        `div.command label.${key} input`,
+        HTMLInputElement
+      );
 
       slider.value = this.config[key] + "";
 
@@ -39,8 +40,9 @@ export class Command {
     const array = Object.keys(this.config) as (keyof Config)[];
     for (const key of array) {
       const slider = querySelector(
-        `div.command label.${key} input`
-      ) as HTMLInputElement;
+        `div.command label.${key} input`,
+        HTMLInputElement
+      );
       slider.addEventListener("input", (event) => {
         const value = +slider.value;
 
