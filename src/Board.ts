@@ -1,5 +1,6 @@
 import { Config } from "./interfaces/Config";
 import { Point } from "./interfaces/Point";
+import { querySelector } from "./utils";
 
 const r = 1;
 
@@ -18,10 +19,7 @@ const getPointFromAngle = (angle: number) => {
   return { x, y };
 };
 
-const lineGroup = document.querySelector("g.lines") as Element;
-if (lineGroup === null) {
-  throw new Error("Cannot find g.lines");
-}
+const lineGroup = querySelector("g.lines");
 
 const drawLine = (p1: Point, p2: Point) => {
   const line = document.createElementNS(svgns, "line");
@@ -32,7 +30,7 @@ const drawLine = (p1: Point, p2: Point) => {
   lineGroup.appendChild(line);
 };
 
-const container = document.querySelector("g.samples") as Element;
+const container = querySelector("g.samples");
 
 export class Board {
   private config: Config = {
