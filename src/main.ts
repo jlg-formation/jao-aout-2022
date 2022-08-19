@@ -20,5 +20,5 @@ try {
     board.redraw();
   });
 } catch (err) {
-  console.log("err: ", err);
+  console.error("err: ", err);
 }
