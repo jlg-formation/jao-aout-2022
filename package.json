@@ -9,7 +9,8 @@
     "watch": "webpack -w",
     "start": "webpack serve",
     "e2e": "cypress open",
-    "e2e:headless": "cypress run"
+    "e2e:headless": "cypress run",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -20,9 +21,12 @@
   },
   "devDependencies": {
     "@types/jest": "^28.1.7",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.0.0",
     "cypress": "^10.6.0",
+    "eslint": "^8.22.0",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^28.1.3",
     "jest-environment-jsdom": "^28.1.3",

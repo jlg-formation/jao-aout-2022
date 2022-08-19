@@ -67,7 +67,7 @@ export class Command {
         `div.command label.${key} input`,
         HTMLInputElement
       );
-      slider.addEventListener("input", (event) => {
+      slider.addEventListener("input", () => {
         const value = +slider.value;
         this.config = { ...this.config, [key]: value };
       });
@@ -78,14 +78,14 @@ export class Command {
 
   private initButtonAction() {
     const button = querySelector("div.command button");
-    button.addEventListener("click", (event) => {
+    button.addEventListener("click", () => {
       console.log("coucou");
       this.isPlaying = !this.isPlaying;
-      this.isPlaying ? this.play() : this.pause();
+      if (this.isPlaying) {
+        this.play();
+      }
     });
   }
-
-  private pause() {}
 
   private async play() {
     while (this.isPlaying) {

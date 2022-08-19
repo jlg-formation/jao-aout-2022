@@ -20,7 +20,7 @@ describe("utils-querySelector", () => {
     try {
       const input = document.createElement("input");
       document.body.appendChild(input);
-      const elt = querySelector("input", HTMLAnchorElement);
+      querySelector("input", HTMLAnchorElement);
     } catch (err) {
       if (!(err instanceof Error)) {
         throw new Error("non");
@@ -34,7 +34,7 @@ describe("utils-querySelector", () => {
   test("querySelector throw an error", () => {
     let foundError = false;
     try {
-      const elt = querySelector("asdfasfd");
+      querySelector("asdfasfd");
     } catch (err) {
       if (!(err instanceof Error)) {
         throw new Error("non");
