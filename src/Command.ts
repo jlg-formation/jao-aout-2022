@@ -9,12 +9,21 @@ export class Command {
     multiplicationFactor: 0,
   };
   callback: ((newConfig: Config) => void) | undefined;
-  isPlaying = false;
+  _isPlaying = false;
   subscription: ReturnType<typeof setInterval> | undefined;
 
   constructor(config: Config) {
     this.config = config;
     this.initActions();
+  }
+
+  get isPlaying() {
+    return this._isPlaying;
+  }
+
+  set isPlaying(val: boolean) {
+    this._isPlaying = val;
+    this.draw();
   }
 
   get config() {
@@ -69,7 +78,6 @@ export class Command {
       console.log("coucou");
       this.isPlaying = !this.isPlaying;
       this.isPlaying ? this.play() : this.pause();
-      this.draw();
     });
   }
 
