@@ -4,38 +4,42 @@ import { keys, querySelector } from "./utils";
 const DELAY = 300;
 
 export class Command {
-  _config: Config = {
+  #config: Config = {
     samples: 0,
     multiplicationFactor: 0,
   };
-  callback: ((newConfig: Config) => void) | undefined;
-  _isPlaying = false;
-  subscription: ReturnType<typeof setInterval> | undefined;
+  #isPlaying = false;
+  #callback: ((newConfig: Config) => void) | undefined;
+  #subscription: ReturnType<typeof setInterval> | undefined;
 
   constructor(config: Config) {
     this.config = config;
     this.initActions();
   }
 
-  get isPlaying() {
-    return this._isPlaying;
+  private get config() {
+    return this.#config;
   }
 
-  set isPlaying(val: boolean) {
-    this._isPlaying = val;
+  private set config(val: Config) {
+    this.#config = val;
     this.draw();
   }
 
-  get config() {
-    return this._config;
+  private get isPlaying() {
+    return this.#isPlaying;
   }
 
-  set config(val: Config) {
-    this._config = val;
+  private set isPlaying(val: boolean) {
+    this.#isPlaying = val;
     this.draw();
   }
 
-  draw() {
+  subscribe(callback: (newConfig: Config) => void) {
+    this.#callback = callback;
+  }
+
+  private draw() {
     const array = keys(this.config);
 
     for (const key of array) {
@@ -53,10 +57,10 @@ export class Command {
     const button = querySelector("div.command button");
     button.innerHTML = this.isPlaying ? "Pause" : "Play";
 
-    this.callback?.(this.config);
+    this.#callback?.(this.config);
   }
 
-  initActions() {
+  private initActions() {
     const array = keys(this.config);
     for (const key of array) {
       const slider = querySelector(
@@ -72,7 +76,7 @@ export class Command {
     this.initButtonAction();
   }
 
-  initButtonAction() {
+  private initButtonAction() {
     const button = querySelector("div.command button");
     button.addEventListener("click", (event) => {
       console.log("coucou");
@@ -81,15 +85,15 @@ export class Command {
     });
   }
 
-  pause() {
-    if (this.subscription === undefined) {
+  private pause() {
+    if (this.#subscription === undefined) {
       return;
     }
-    clearInterval(this.subscription);
+    clearInterval(this.#subscription);
   }
 
-  play() {
-    this.subscription = setInterval(() => {
+  private play() {
+    this.#subscription = setInterval(() => {
       let multiplicationFactor = this.config.multiplicationFactor;
       multiplicationFactor++;
       if (multiplicationFactor > 100) {
@@ -97,9 +101,5 @@ export class Command {
       }
       this.config = { ...this.config, multiplicationFactor };
     }, DELAY);
-  }
-
-  subscribe(callback: (newConfig: Config) => void) {
-    this.callback = callback;
   }
 }
