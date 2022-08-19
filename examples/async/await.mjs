@@ -1,4 +1,4 @@
-const fs = require("fs").promises;
+import { promises as fs } from "fs";
 
 try {
   const files = await fs.readdir(".");
