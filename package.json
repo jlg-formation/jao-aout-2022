@@ -7,7 +7,9 @@
     "test": "jest --watch",
     "build": "webpack --mode production",
     "watch": "webpack -w",
-    "start": "webpack serve"
+    "start": "webpack serve",
+    "e2e": "cypress open",
+    "e2e:headless": "cypress run"
   },
   "keywords": [],
   "author": "",
