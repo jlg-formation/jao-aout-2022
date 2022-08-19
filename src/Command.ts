@@ -1,5 +1,5 @@
 import { Config } from "./interfaces/Config";
-import { keys, querySelector } from "./utils";
+import { keys, querySelector, sleep } from "./utils";
 
 const DELAY = 300;
 
@@ -85,21 +85,17 @@ export class Command {
     });
   }
 
-  private pause() {
-    if (this.#subscription === undefined) {
-      return;
-    }
-    clearInterval(this.#subscription);
-  }
+  private pause() {}
 
-  private play() {
-    this.#subscription = setInterval(() => {
+  private async play() {
+    while (this.isPlaying) {
+      await sleep(DELAY);
       let multiplicationFactor = this.config.multiplicationFactor;
       multiplicationFactor++;
       if (multiplicationFactor > 100) {
         multiplicationFactor = 0;
       }
       this.config = { ...this.config, multiplicationFactor };
-    }, DELAY);
+    }
   }
 }
