@@ -13,3 +13,7 @@ export const querySelector = <T extends Element>(
   }
   return result as T;
 };
+
+export const keys = <T>(obj: T): (keyof T)[] => {
+  return Object.keys(obj) as (keyof T)[];
+};
