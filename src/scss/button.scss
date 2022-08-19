@@ -1,0 +1,17 @@
+button {
+  cursor: pointer;
+  padding: 0.5em 1em;
+  border: 0.1em solid #eee;
+  background-color: #eee;
+  border-radius: $border-radius;
+
+  &:hover {
+    border-color: #ddd;
+    background-color: #ddd;
+  }
+
+  &:active {
+    border-color: #ccc;
+    background-color: #ccc;
+  }
+}
